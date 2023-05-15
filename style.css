@@ -1,0 +1,305 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nothing+You+Could+Do&display=swap');
+
+:root {
+  --bg-color: #15053b;
+  --main-color: #523785;
+  --lavender-color: #d0b5ff;
+  --purplepain-color: #e294ff;
+  --cold-color: #e5eaf5;
+  --ice-color: #a0d2eb;
+}
+
+body {
+  font-family: 'Work Sans', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--cold-color); 
+  /* stars background */
+  background-image:
+  radial-gradient(white, rgba(255,255,255,.2) 4px, transparent 40px),
+  radial-gradient(white, rgba(255,255,255,.15) 2px, transparent 30px),
+  radial-gradient(white, rgba(255,255,255,.1) 4px, transparent 50px),
+  radial-gradient(rgba(255,255,255,.4), rgba(255,255,255,.1) 4px, transparent 30px);
+background-size: 550px 550px, 350px 350px, 250px 250px, 150px 150px;
+background-position: 0 0, 40px 60px, 130px 270px, 70px 100px;
+/* animation: gradient 160s ease-in-out infinite; */
+
+height: 100vh;
+overflow-x: hidden;
+}
+
+@keyframes gradient {
+	0% {background-position: 25% 75%;}
+	50% {background-position: 100% 25%;}
+  75%  {background-position: 25% 100%;}
+	100% {background-position: 75% 25%;}
+}
+
+.main {
+  background-color: var(--main-color);
+  width:970px;
+  margin: auto;
+  text-align: center;
+  padding: 30px;
+  border-radius:  30px;
+  border-color: white;
+  border-style: solid;
+  border-width: thin;
+  box-shadow: 10px 10px 15px rgba(15, 15, 15, 0.75);
+  }
+
+.main article{
+  text-align: justify;
+  text-justify: inter-word;
+  padding-left: 80px;
+  padding-right: 80px;
+  width:970px;
+}  
+
+h1{
+  font-family: 'Nothing You Could Do', cursive;
+}
+
+.img {
+  opacity: 0.8;
+  width: 50%;
+  margin: auto;
+}
+
+table {
+  padding: 10px;
+  text-align: left;
+  /* width: 80%;  */
+}
+
+th, td {
+  padding: 5px;
+  width: auto; 
+}
+
+
+.inactive {
+  text-decoration: line-through;
+}
+
+.name-group, .user-credentials-group, .agreement-group, .signupbtn {
+  border-radius: 5px;
+  margin-bottom: 20px;
+  text-align: left;
+  margin-right: 5px;
+  padding: 10px;
+  }
+
+.company-group{
+  border-radius: 5px;
+  margin-bottom: 20px;
+  text-align: center;
+  margin-right: 5px;
+}
+
+.services-group {
+  text-align: left;
+  }
+
+
+.agreement{
+  text-align: center;
+  height:300px;
+  width:350px;
+  overflow:auto;
+  color: black;
+  margin: auto;
+  border-radius: 5px;
+  background-color: #fff;
+  padding: 10px;
+  }
+
+  /* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* input[type=text]{
+  width: 350px;
+  padding: 10px;
+  border-radius:  5px;
+  margin: auto;
+} */
+
+select{
+  width: 350px;
+  padding: 10px;
+  border-radius:  5px;
+  margin: auto;
+}
+  
+/* textarea{
+  width: 350px;
+  padding: 10px;
+  border-radius:  5px;
+  margin: auto;
+}  */
+
+.nav {
+  overflow: hidden;
+  text-decoration: none; 
+  font-family: inherit; /* Important for vertical align on mobile phones */
+  margin: 0; /* Important for vertical align on mobile phones */
+  font-weight: bolder;
+}
+
+.nav a:link {
+  color: var(--cold-color);
+  padding: 10px;
+  font-weight: bolder;
+  font-size: 18px;
+}
+  
+.nav a:hover {
+  color: rgb(0, 0, 0);
+  background-color: var(--lavender-color);
+}
+
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+.dropdown .dropbtn {
+  font-size: 16px;
+  border: none;
+  outline: none;
+  color: var(--cold-color);
+  padding: 10px;
+  background-color: inherit;
+  font-size: 18px;
+}
+
+.dropdown .dropbtn:hover {
+  color: rgb(0, 0, 0);
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #525252;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  float: none;
+  color: var(--ice-color);
+  padding: 10px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+  font-size: 18px;
+}
+
+.dropdown-content a:hover {
+  color: rgb(0, 0, 0);
+  background-color: var(--lavender-color);
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover {
+  color: rgb(0, 0, 0);
+  background-color: var(--lavender-color);
+}
+
+a{
+  text-decoration: none; 
+}
+
+.main a:link {
+  color: var(--cold-color);
+  padding: 8px;
+  font-weight: bolder;
+  font-size: 16px;
+}
+  
+.main a:hover {
+  color: rgb(0, 0, 0);
+  background-color: var(--lavender-color);
+}
+
+a:visited {
+  color: var(--cold-color);
+}
+
+a:visited:hover {
+  color: rgb(0, 22, 6);
+}
+
+.topnav-right {
+  float: right;
+}
+
+.signupbtn {
+  margin: auto;
+  border-radius:  5px;
+  text-align: center;
+  width: 150px;
+  padding: 10px;
+  font-family: 'Work Sans', sans-serif;
+  font-weight:bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--lavender-color);
+  color: var(--bg-color);
+}  
+
+.signupbtn:hover{
+  transform: scale(1.2);
+  padding: 10px;
+  color: rgb(0, 0, 0);
+  background-color: var(--lavender-color);
+  font-family: 'Work Sans', sans-serif;
+  font-weight: bolder;
+}   
+
+.stars {
+  top: -55px;
+  left: 300px;
+  position: absolute;
+  background-repeat: repeat-x;
+  z-index: -1;
+}
+.stars2 {
+  top: -55px;
+  left: 750px;
+  position: absolute;
+  background-repeat: repeat-x;
+  z-index: -1;
+}
+
+.topic-post {
+	height: 100px;
+	overflow: auto;
+}
+.post-content {
+	padding: 30px;
+}
+textarea {
+	width: 500px;
+	height: 200px;
+}
+
+.footer {
+  z-index: -1 ;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+
+}
+
+
