@@ -4,6 +4,7 @@
 // create_cat.php
 include 'db.php';
 echo "<div class='main'>";
+echo '<h2>Create a Category</h2>';
 
 // Start the session
 session_start();

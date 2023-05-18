@@ -45,6 +45,7 @@ $resultCheck = $stmtCheck->get_result();
 if ($resultCheck->num_rows > 0) {
     // Email or username already exists
     echo "Email or username already exists. Please choose a different email or username.";
+    echo '<td><a href="signup.php">Back to Signup</a></td></br></br>';
 } else {
     // Insert form data into database
     $sql = "INSERT INTO USERPROFILE (username, first_name, last_name, city, state, email)
@@ -55,9 +56,11 @@ if ($resultCheck->num_rows > 0) {
     if ($stmt->execute()) {
         // Registration successful
         echo "Registration successful.";
+        //echo '<td><a href="login.php">Login!</a></td></br></br>';
     } else {
         // Registration failed
         echo "Registration failed. Please try again later.";
+        echo '<td><a href="signup.php">Back to Signup</a></td></br></br>';
     }
 }
 
@@ -104,6 +107,7 @@ if ($fields['password'] == $fields['confirmpass']) {
       echo "Last Name: " . $fields['last-name'] . "</br>";
       echo "Create Date: " . date('m-d-Y H:i:s') . "</p>";
       echo '<button type="submit" name="submit" class="signupbtn" onclick="window.location.href=\'list_users.php\'">Sign Up a New Star</button></br>';
+      echo '<td><a href="login.php">Login!</a></td></br></br>';
       echo '<button type="submit" name="submit" class="signupbtn" onclick="window.location.href=\'profile_img.php?id=' . $id . '\'">Add a Profile Image!</button></br></div>';
   } else {
       echo "Error updating password: " . mysqli_error($connection);

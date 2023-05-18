@@ -15,7 +15,8 @@
 </br>
 </div>
     <div> 
-      <p>Forgot Password?<a href='#'>Contact IT</a></p>
+      <p>Forgot Password?<a href='#'>Reset Password</a></p></br>
+      <p>New to our site?<a href='signup.php'>Sign up!</a></p></br></br>
     </div>
 </div>
 </form>
