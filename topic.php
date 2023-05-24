@@ -2,6 +2,7 @@
 
 <?php
 include 'db.php';
+$dir = 'Lab6/uploads';  // Path to the directory where images are stored
 
 // Start the session
 session_start();
@@ -29,7 +30,7 @@ $sql = "SELECT
         WHERE
             topic_id = ?";
 $stmt = mysqli_prepare($connection, $sql);
-mysqli_stmt_bind_param($stmt, "s", $topicId);
+mysqli_stmt_bind_param($stmt, "i", $topicId);
 mysqli_stmt_execute($stmt);
 $result = mysqli_stmt_get_result($stmt);
 
@@ -47,42 +48,62 @@ if (!$result) {
             echo '<p>Category: ' . $row['topic_cat'] . '</p>';
         }
 
-        // Retrieve and display POSTS
+        // Retrieve and display POSTS, retireve USER profile img
         $sqlPosts = "SELECT
-                    post_id,
-                    post_content,
-                    post_date,
-                    post_by
-                FROM
-                    POSTS
-                WHERE
-                    post_topic = " . mysqli_real_escape_string($connection, $topicId);
-        $resultPosts = mysqli_query($connection, $sqlPosts);
+                        POSTS.post_id,
+                        POSTS.post_content,
+                        POSTS.post_date,
+                        USERPROFILE.username,
+                        USERPROFILE.profile_img
+                    FROM
+                        POSTS
+                    INNER JOIN
+                        USERPROFILE
+                    ON
+                        POSTS.post_by = USERPROFILE.user_id
+                    WHERE
+                        POSTS.post_topic = ?";
+        $stmtPosts = mysqli_prepare($connection, $sqlPosts);
+        mysqli_stmt_bind_param($stmtPosts, "s", $topicId);
+        mysqli_stmt_execute($stmtPosts);
+        $resultPosts = mysqli_stmt_get_result($stmtPosts);
 
         if (!$resultPosts) {
             echo 'The replies could not be displayed, please try again later.</br>';
             echo '<td><a href="forums.php">Back to Forums</a></td>';
         } else {
             // Loop through and display the retrieved posts
+            echo "<div class='postBox'>";
             while ($rowPosts = mysqli_fetch_assoc($resultPosts)) {
-                echo '<div>';
-                echo '<p>Author: ' . $rowPosts['post_by'] . '</p>';
-                echo '<p>Date: ' . date('d-m-Y H:i:s', strtotime($rowPosts['post_date'])) . '</p>';
-                echo '<p>' . $rowPosts['post_content'] . '</p>';
-                echo '</div>';
+                $imagePath = $dir . '/' . $rowPosts['profile_img'];
+                echo "<div class='postBox'>";
+                echo '<p><img src="' . $imagePath . '" alt="Profile image" class="thumbnail">';
+                echo 'Author: ' . $rowPosts['username'] . ' Date: ' . date('d-m-Y H:i:s', strtotime($rowPosts['post_date'])) . '</br>';
+                echo '' . '</br>'. $rowPosts['post_content'] . '</p>';
+                echo '</div></br></br>';
             }
+            echo "</div></br>";
         }
         
         // Provide a form for users to submit new posts
-        echo '</br></br><h4>Add a New Post</h4>';
-        echo '<form method="POST" action="reply.php">';
-        echo 'Your Name:</br>';
-        echo '<input type="text" name="name"></br>';
-        echo 'Content:</br>';
+        echo '<div class="postBox"></br></br><h4>Add a New Post</h4>';
+        echo '<form method="POST" action="reply.php"><p>';
+        echo 'Your Post:</br>';
         echo '<textarea name="content"></textarea></br>';
         echo '<input type="hidden" name="topic_id" value="' . $topicId . '">';
-        echo '<input type="submit" value="Submit">';
-        echo '</form></br>';
+        echo '<button class="button" type="submit">Submit</button>';
+        echo '</form></p></br></div></br>';
+        // Add a back button
+        echo '<button class="button" onclick="goBack()">Back</button>';
+        echo '</div></br>';
+
+        // JavaScript function to go back to the previous page
+        echo '<script>';
+        echo 'function goBack() {';
+        echo '    history.go(-1);';
+        echo '}';
+        echo '</script>';
+
     }
 }
 

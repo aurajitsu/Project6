@@ -56,24 +56,37 @@ overflow-x: hidden;
   width:970px;
 }  
 
-h1{
+.postBox{
+  border: 1px solid white;
+  max-width: 640px;
+  margin: auto;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+h1, h2, h3{
   font-family: 'Nothing You Could Do', cursive;
 }
 
-h2{
-  font-family: 'Nothing You Could Do', cursive;
-}
 
 .img {
-  opacity: 0.8;
   width: 50%;
   margin: auto;
 }
 
-table {
+ table {
   padding: 10px;
   text-align: left;
-  /* width: 80%;  */
+  width: 80%;  
+} 
+
+img.thumbnail{
+  width: 70px;
+  height: 70px;
+  border: 1px solid;
+  float: left;
+  padding: 3px;
+  margin: auto;
 }
 
 th, td {
@@ -165,6 +178,22 @@ select{
   color: rgb(0, 0, 0);
   background-color: var(--lavender-color);
 }
+
+.button{
+  color: var(--main-color);
+  padding: 10px;
+  font-weight: bolder;
+  font-size: 14px;
+  border-radius: 10px;
+}
+
+.button:hover{  
+  color: rgb(0, 0, 0);
+  background-color: var(--lavender-color);
+  border-radius: 10px;
+}
+
+
 
 .dropdown {
   float: left;
@@ -294,8 +323,8 @@ a:visited:hover {
 	padding: 30px;
 }
 textarea {
-	width: 500px;
-	height: 200px;
+	width: 400px;
+	height: 150px;
 }
 
 .footer {

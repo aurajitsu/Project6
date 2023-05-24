@@ -30,23 +30,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   // Verify the entered password against the stored hashed password
   if (($password == $stored_password)) {
       // Login successful
-      $_SESSION['id'] = $user['user_id'];
+      $_SESSION['user_id'] = $user['user_id'];
       $user_id = $user['user_id'];
       echo "Passed login successful! Entered Username: " . $username . "<br>";
-      header("Location: forums.php");
-      // Check if a redirect URL is stored in the session
-      // if (isset($_SESSION['redirect_url'])) {
-        
-      //   // Redirect the user back to the stored URL
-      //   $redirectUrl = $_SESSION['redirect_url'];
-      //   unset($_SESSION['redirect_url']); // Remove the stored URL from the session
-      //   header("Location: $redirectUrl");
-      //   exit();
-      // } else {
-      //   // No redirect URL available, redirect to a default page
-      //   header("Location: home.php");
-      //   exit();
-      //   }
+      header("Location: home.php");
     } else {
         // Login failed
         echo "Invalid name or password.";
@@ -59,5 +46,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 // Close the database connection
 $connection = null;
 ?>
+
 
 

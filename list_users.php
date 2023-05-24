@@ -2,6 +2,16 @@
 
 <?php
 require 'db.php';
+// Start the session
+session_start();
+
+// Check if the user is logged in
+if (!isset($_SESSION['user_id'])) {
+    // User is not logged in, redirect to login page
+    header("Location: login.php");
+    exit();
+}
+
 echo "<div class='main'>";
 echo "<img src='sleeping.png' height='248.5' width='262.5'>";
 echo "<h1>All Little Stars</h1></br>";
@@ -43,14 +53,14 @@ if (isset($_GET['sort']) && isset($_GET['order'])) {
 // display table rows
 while ($row = mysqli_fetch_assoc($result)) {
     echo "<tr><td>";
-    $dir = 'Lab6/uploads';  // Define the directory where images are stored.
+    $dir = 'Lab6/uploads';  //pull profile img to display
     if (!empty($row['profile_img'])) {
         $imagePath = $dir . '/' . $row['profile_img'];
-        echo "<img src='" . $imagePath . "' alt='Profile Image'></tr>";
+        echo "<img src='" . $imagePath . "' alt='Profile Image' class='thumbnail'></tr>";
     } else {
         echo "No Image.";
     }
-    // echo out each table row from query/database
+    //echo out each table row from query/database
     echo "<tr><td><a href='profile_img.php?id=" . $row['user_id'] . "&username=" . $row['username'] . "' class='editLink'>upload</a></td>" .
         "<td>" . $row['user_id'] .
         "</td><td>" . $row['username'] .
@@ -58,8 +68,7 @@ while ($row = mysqli_fetch_assoc($result)) {
         "</td><td>" . $row['city'] ." ". $row['state'] .
         "</td><td>" . $row['email']."</td></tr>";
 }
-echo "</table>";
-echo "</div>";
+echo "</table></div>";
 
 
 ?>

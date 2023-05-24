@@ -60,6 +60,7 @@ $sql = "SELECT
         WHERE
             cat_id = " . mysqli_real_escape_string($connection, $catId);
 $result = mysqli_query($connection, $sql);
+
 if (!$result) {
     echo 'The category could not be displayed, please try again later.' . mysqli_error($connection);
 } else {
@@ -87,6 +88,7 @@ if (!$result) {
         } else {
             if (mysqli_num_rows($result) == 0) {
                 echo 'There are no topics in this category yet.';
+                echo '</br><td><a href="create_topic.php">Create one!</a></td>';
             } else {
                 // Prepare the table
                 echo '<table>
@@ -109,6 +111,8 @@ if (!$result) {
         }
     }
 }
+
+
 ?>
 
 

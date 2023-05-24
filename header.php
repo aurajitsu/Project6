@@ -41,7 +41,20 @@
   </div>
 
       <div class="topnav-right">
-      <a href='dashboard.php'>Login</a>
+      <?php// Start the session
+            // session_start();
+            // require 'db.php';
+            // // Check if the user is logged in
+            // if (isset($_SESSION['user_id'])) {
+            //     // User is logged in, display the user name
+            //     $username = $_SESSION['username'];
+            //     echo '<span>Welcome, ' . $username . '!</span>';
+            // } else {
+            //     // User is not logged in, display the login link
+            //     echo '<a href="dashboard.php">Login</a>';
+            // }
+            ?>
+          <a href="login.php">Login</a>
         </div>
     </div>
     
