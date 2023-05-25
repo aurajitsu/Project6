@@ -18,34 +18,46 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $stmt->execute();
   $user_result = $stmt->get_result();
   $user = mysqli_fetch_assoc($user_result);
-  print_r($user);  //testing
-  //print_r($_SESSION['id']); //testing
-
+  $stored_password = '';
   // testing
   echo "Entered Username: " . $username . "<br>";
   echo "Entered Password: " . $password . "<br>";
 
   if ($user) {
+     // Ensure the 'password' index exists and is not empty
+     if (!isset($user['password']) || empty($user['password'])) {
+      echo "The 'password' index does not exist or is empty.";
+  } else {
       $stored_password = $user['password'];
-  // Verify the entered password against the stored hashed password
-  if (($password == $stored_password)) {
+      echo 'Hashed password from database: ' . $stored_password . "<br>";
+  }
+  //testing
+    //echo 'User fetched from the database: ';
+    //print_r($user) . "<br>";
+    $verification_result = password_verify($password, $stored_password);
+    echo 'Verification result: ' . ($verification_result ? 'true' : 'false') . '</br>';
+
+    $stored_password = $user['password'];
+    // Verify the entered password against the stored hashed password
+    if ($verification_result) {
       // Login successful
       $_SESSION['user_id'] = $user['user_id'];
+      $_SESSION['username'] = $username;
       $user_id = $user['user_id'];
-      echo "Passed login successful! Entered Username: " . $username . "<br>";
+      echo "Passed login successful! Entered Username: " . $username . "</br>";
       header("Location: home.php");
     } else {
-        // Login failed
-        echo "Invalid name or password.";
-      }
+      // Login failed
+            echo 'Invalid password.';
+        
+    }
   }
+
   // Close the database connection
   $stmt->close();
   $connection->close();
 }
+
 // Close the database connection
 $connection = null;
 ?>
-
-
-

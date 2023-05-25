@@ -24,10 +24,10 @@ if ($error === 'passwords_not_match') {
         <input type='text' id='username' name='username' placeholder='username' required></br>
         <input type='text' id='first-name' name='first-name' placeholder='First' required></br>
         <input type='text' id='last-name' name='last-name' placeholder='Last' required></br>
-        <input type="text" id='city' name="city" value="city" placeholder='city' required> </br>
+        <input type="text" id='city' name="city" placeholder='city' required> </br>
         <!-- at some point validate city in selected state -->
-        <input type="text" id='state' name="state" value="state" placeholder='state' required></br>
-    <input type='email' id='email' name='email' value='email' placeholder='Email' required> </br>
+        <input type="text" id='state' name="state" placeholder='state' required></br>
+    <input type='email' id='email' name='email' placeholder='Email' required> </br>
 
     <input type="password" placeholder="Enter Password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
     </br>
