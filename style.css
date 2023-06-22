@@ -76,7 +76,7 @@ h1, h2, h3{
 
  table {
   padding: 10px;
-  text-align: left;
+  text-align: center;
   width: 80%;  
 } 
 
@@ -84,6 +84,7 @@ img.thumbnail{
   width: 70px;
   height: 70px;
   border: 1px solid;
+  border-radius: 10px;
   float: left;
   padding: 3px;
   margin: auto;

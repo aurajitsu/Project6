@@ -45,7 +45,7 @@ if (!$result) {
         // Display the topic details
         while ($row = mysqli_fetch_assoc($result)) {
             echo '<h2>' . $row['topic_subject'] . '</h2>';
-            echo '<p>Category: ' . $row['topic_cat'] . '</p>';
+            //echo '<p>Category: ' . $row['topic_cat'] . '</p>';
         }
 
         // Retrieve and display POSTS, retireve USER profile img
@@ -78,9 +78,10 @@ if (!$result) {
                 $imagePath = $dir . '/' . $rowPosts['profile_img'];
                 echo "<div class='postBox'>";
                 echo '<p><img src="' . $imagePath . '" alt="Profile image" class="thumbnail">';
-                echo 'Author: ' . $rowPosts['username'] . ' Date: ' . date('d-m-Y H:i:s', strtotime($rowPosts['post_date'])) . '</br>';
-                echo '' . '</br>'. $rowPosts['post_content'] . '</p>';
-                echo '</div></br></br>';
+                echo $rowPosts['username'] .' says: ' . '</br>';
+                echo '' . '</br>'. $rowPosts['post_content'] . '</p></br></br>';
+                echo ' Date: ' . date('m-d-Y H:i:s', strtotime($rowPosts['post_date'])) .' ';
+                echo '</div></br>';
             }
             echo "</div></br>";
         }
